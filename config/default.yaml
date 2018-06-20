@@ -1,5 +1,5 @@
 app:
   port: 3000
   pub_dir: "/public"
-  csrf: false
+  csrf: true
   cookie_secret: "asdfadsf324324234sdfsdfsadf"

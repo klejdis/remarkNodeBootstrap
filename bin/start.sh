@@ -11,7 +11,7 @@ if [ ! -d "$PWD/node_modules" ]; then
 fi
 
 # Disable the runtime.json thing of config.js. It's annoying and sometimes breaks clustering.
-export NODE_CONFIG_DISABLE_FILE_WATCH="Y"
+export NODE_CONFIG_DISABLE_FILE_WATCH="N"
 
 # Setup metalogger
 if [ ! $NODE_LOGGER_LEVEL ]; then
@@ -24,7 +24,7 @@ if [ ! $NODE_LOGGER_PLUGIN ]; then
   export NODE_LOGGER_PLUGIN='util'
 fi
 
-NBS_CURR_PROJECT_PATH=$PWD
+export NBS_CURR_PROJECT_PATH=$PWD
 
 if [ ! $NODE_LAUNCH_SCRIPT ]; then
   export NODE_LAUNCH_SCRIPT="$NBS_CURR_PROJECT_PATH/server.js"
@@ -40,7 +40,7 @@ if [ ! $NODE_ENV ]; then
 fi
 
 if [ ! $NODE_CLUSTERED ]; then
-  export NODE_CLUSTERED=1
+  export NODE_CLUSTERED=0
 fi
 
 if [ ! $NODE_SERVE_STATIC ]; then
@@ -48,7 +48,7 @@ if [ ! $NODE_SERVE_STATIC ]; then
 fi
 
 if [ ! $NODE_HOT_RELOAD ]; then
-  export NODE_HOT_RELOAD=0
+  export NODE_HOT_RELOAD=1
 fi
 
 if [ !  $NODE_CONFIG_DIR ]; then
@@ -66,16 +66,16 @@ if [ ! -d "$NODE_LOG_DIR" ]; then
 fi
 
 if [ "$NODE_HOT_RELOAD" = "1" ]; then
-
-  # Let's make sure you have nodemon installed, if we are gonna need it:
   if [ ! `which nodemon` ]; then
     echo "ERROR: nodemon missing. Will try to install.";
     npm install nodemon -g
   fi
 
   if [ "$NB_IS_CONTAINER" = "1" ]; then
-    nodemon -L -e js,coffee,jade,handlebars ${NODE_LAUNCH_SCRIPT}
+     echo "is container";
+    #nodemon -L -e js,coffee,jade,handlebars ${NODE_LAUNCH_SCRIPT}
   else
+    echo "is not container";
     nodemon -e js,coffee,jade,handlebars ${NODE_LAUNCH_SCRIPT}
   fi
 else

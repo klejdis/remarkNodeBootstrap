@@ -1,2 +1,4 @@
 app:
   csrf: false
+  port: 3000
+  pub_dir: "/public"
