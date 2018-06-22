@@ -1,11 +1,12 @@
 require('app-module-path').addPath(__dirname + '/lib');
-require('app-module-path').addPath(__dirname + '/express');
+require('app-module-path').addPath(__dirname + '/express')
 
 var passport = require('passport');
 var config = require('config');
 var frontend = require('./express/frontend');
 var backend = require('./express/backend');
 var middleware = require('./express/middlewares');
+
 
 exports.setup = function(runningApp, callback) {
 

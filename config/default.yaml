@@ -3,3 +3,4 @@ app:
   pub_dir: "/public"
   csrf: true
   cookie_secret: "asdfadsf324324234sdfsdfsadf"
+  base_url: localhost:3000

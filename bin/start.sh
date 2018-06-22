@@ -73,10 +73,10 @@ if [ "$NODE_HOT_RELOAD" = "1" ]; then
 
   if [ "$NB_IS_CONTAINER" = "1" ]; then
      echo "is container";
-    #nodemon -L -e js,coffee,jade,handlebars ${NODE_LAUNCH_SCRIPT}
+    #nodemon -L -e js,handlebars,hbs ${NODE_LAUNCH_SCRIPT}
   else
     echo "is not container";
-    nodemon -e js,coffee,jade,handlebars ${NODE_LAUNCH_SCRIPT}
+    nodemon -e js,handlebars,hbs ${NODE_LAUNCH_SCRIPT}
   fi
 else
   node ${NODE_LAUNCH_SCRIPT}
